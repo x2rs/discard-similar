@@ -1,3 +1,5 @@
+SIMILARITY_THRESHOLD = 0.9 # 相似度超过90%就丢弃
+
 import json
 
 import difflib
@@ -22,7 +24,7 @@ def remove_similar_data(data, similarity_threshold):
 with open("filled_dataset.json", "r", encoding='utf-8') as f:
     raw_array = json.load(f)
 
-filtered_array = remove_similar_data(raw_array, 0.9)
+filtered_array = remove_similar_data(raw_array, SIMILARITY_THRESHOLD)
 
 with open("filtered_dataset.json", "w", encoding='utf-8') as f:
     json.dump(filtered_array, f, ensure_ascii=False, indent=4)
